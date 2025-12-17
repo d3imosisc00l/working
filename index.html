@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: #6a0dad; /* dull purple */
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #6a0dad; /* dull purple */
+}
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    img {
-      width: 500vw;        /* FORCE the GIF to scale up */
-      height: auto;       /* maintain aspect ratio */
-      max-height: 550vh;
-      object-fit: contain;
-      image-rendering: pixelated; /* keep pixel art crisp */
-    }
-  </style>
+img {
+  width: 85vw;        /* scale GIF up */
+  height: auto;       /* preserve aspect ratio */
+  max-height: 90vh;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+</style>
 </head>
 
 <body>
@@ -33,19 +33,25 @@
 <img id="gif" src="pixil-gif-drawing (8).gif">
 
 <script>
-  const gif = document.getElementById("gif");
+const gif = document.getElementById("gif");
 
-  const introDuration = 3800;  // intro.gif
-  const middleDuration = 700;  // middle.gif
+// Create audio object
+const music = new Audio('DSaF Super idol (Music box).mp3'); // <-- your music
+music.loop = true;
+music.play().catch(e => console.log("Autoplay blocked, user interaction required."));
 
-  setTimeout(() => {
-    // Add cache-busting so new GIF is forced to load
-    gif.src = "pixil-gif-drawing (11).gif?" + Date.now();
-  }, introDuration);
+// Durations in milliseconds
+const introDuration = 3800;  // intro GIF
+const middleDuration = 700;  // middle GIF
 
-  setTimeout(() => {
-    gif.src = "pixil-gif-drawing (10).gif?" + Date.now();
-  }, introDuration + middleDuration);
+// GIF sequence
+setTimeout(() => {
+  gif.src = "pixil-gif-drawing (11).gif?" + Date.now();
+}, introDuration);
+
+setTimeout(() => {
+  gif.src = "pixil-gif-drawing (10).gif?" + Date.now();
+}, introDuration + middleDuration);
 </script>
 
 </body>
