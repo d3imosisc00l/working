@@ -23,6 +23,7 @@ img {
   object-fit: contain;
   image-rendering: pixelated;
   display: block;
+  pointer-events: none; /* lets clicks pass through to body for music */
 }
 </style>
 </head>
@@ -38,19 +39,11 @@ const gif = document.getElementById("gif");
 const music = new Audio('DSaF Super idol (Music box).mp3');
 music.loop = true;
 
-// Attempt autoplay immediately
-music.play().catch(() => {
-  // If autoplay is blocked, play on first click
-  document.body.addEventListener('click', () => {
-    music.play();
-  }, { once: true });
-});
-
-// GIF durations
+// GIF durations in milliseconds
 const introDuration = 3800;  // intro GIF
 const middleDuration = 700;  // middle GIF
 
-// Start GIF sequence
+// Start GIF sequence immediately
 setTimeout(() => {
   gif.src = "pixil-gif-drawing (11).gif?" + Date.now();
 }, introDuration);
@@ -58,6 +51,11 @@ setTimeout(() => {
 setTimeout(() => {
   gif.src = "pixil-gif-drawing (10).gif?" + Date.now();
 }, introDuration + middleDuration);
+
+// Play music on first click anywhere
+document.body.addEventListener('click', () => {
+  music.play().catch(e => console.log("Music playback failed:", e));
+}, { once: true });
 </script>
 
 </body>
