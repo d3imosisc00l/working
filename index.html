@@ -9,21 +9,20 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  background: #6a0dad; /* dull purple */
-}
-
-body {
+  background: #6a0dad;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 img {
-  width: 85vw;        /* scale GIF up */
-  height: auto;       /* preserve aspect ratio */
+  width: 85vw;
+  height: auto;
   max-height: 90vh;
   object-fit: contain;
   image-rendering: pixelated;
+  display: block;
 }
 </style>
 </head>
@@ -36,15 +35,22 @@ img {
 const gif = document.getElementById("gif");
 
 // Create audio object
-const music = new Audio('DSaF Super idol (Music box).mp3'); // <-- your music
+const music = new Audio('DSaF Super idol (Music box).mp3');
 music.loop = true;
-music.play();
 
-// Durations in milliseconds
+// Attempt autoplay immediately
+music.play().catch(() => {
+  // If autoplay is blocked, play on first click
+  document.body.addEventListener('click', () => {
+    music.play();
+  }, { once: true });
+});
+
+// GIF durations
 const introDuration = 3800;  // intro GIF
 const middleDuration = 700;  // middle GIF
 
-// GIF sequence
+// Start GIF sequence
 setTimeout(() => {
   gif.src = "pixil-gif-drawing (11).gif?" + Date.now();
 }, introDuration);
