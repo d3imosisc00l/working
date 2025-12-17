@@ -62,6 +62,21 @@ music.muted = true; // start muted for autoplay trick
 const introDuration = 3800;  // intro GIF
 const middleDuration = 700;  // middle GIF
 
+// --------- PRELOAD GIFS ---------
+const gifsToPreload = [
+  "pixil-gif-drawing (8).gif",
+  "pixil-gif-drawing (11).gif",
+  "pixil-gif-drawing (10).gif"
+];
+
+const preloadedGifs = [];
+gifsToPreload.forEach(src => {
+  const img = new Image();
+  img.src = src;
+  preloadedGifs.push(img);
+});
+// -------------------------------
+
 clickText.addEventListener('click', () => {
   // Hide the click text
   clickText.style.display = 'none';
