@@ -38,7 +38,7 @@ const gif = document.getElementById("gif");
 // Create audio object
 const music = new Audio('DSaF Super idol (Music box).mp3'); // <-- your music
 music.loop = true;
-music.play().catch(e => console.log("Autoplay blocked, user interaction required."));
+music.play();
 
 // Durations in milliseconds
 const introDuration = 3800;  // intro GIF
