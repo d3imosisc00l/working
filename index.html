@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: purple;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img {
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+    }
+  </style>
+</head>
+
+<body>
+
+<img id="gif" src="pixil-gif-drawing (8).gif">
+
+<script>
+  const gif = document.getElementById("gif");
+
+  // ⏱️ CHANGE THESE TIMES TO MATCH YOUR GIFS (milliseconds)
+  const introDuration = 3000;   // pixil-gif-drawing (8).gif
+  const middleDuration = 2000;  // pixil-gif-drawing (11).gif
+
+  setTimeout(() => {
+    gif.src = "pixil-gif-drawing (11).gif";
+  }, introDuration);
+
+  setTimeout(() => {
+    gif.src = "pixil-gif-drawing (10).gif";
+  }, introDuration + middleDuration);
+</script>
+
+</body>
+</html>
