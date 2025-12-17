@@ -23,7 +23,15 @@ img {
   object-fit: contain;
   image-rendering: pixelated;
   display: block;
-  pointer-events: none; /* lets clicks pass through to body for music */
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer; /* indicates user can click anywhere */
 }
 </style>
 </head>
@@ -31,17 +39,19 @@ img {
 <body>
 
 <img id="gif" src="pixil-gif-drawing (8).gif">
+<div id="overlay"></div>
 
 <script>
 const gif = document.getElementById("gif");
+const overlay = document.getElementById("overlay");
 
-// Create audio object
+// Audio
 const music = new Audio('DSaF Super idol (Music box).mp3');
 music.loop = true;
 
-// GIF durations in milliseconds
-const introDuration = 3800;  // intro GIF
-const middleDuration = 700;  // middle GIF
+// GIF durations
+const introDuration = 3800;
+const middleDuration = 700;
 
 // Start GIF sequence immediately
 setTimeout(() => {
@@ -53,8 +63,9 @@ setTimeout(() => {
 }, introDuration + middleDuration);
 
 // Play music on first click anywhere
-document.body.addEventListener('click', () => {
+overlay.addEventListener('click', () => {
   music.play().catch(e => console.log("Music playback failed:", e));
+  overlay.style.display = 'none'; // remove overlay
 }, { once: true });
 </script>
 
