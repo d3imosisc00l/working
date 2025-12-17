@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>SPY ON JACK</title>
 
-<!-- Placeholder favicon -->
 <link rel="icon" href="pixil-frame-0 (13).png" type="image/x-icon">
 
 <style>
@@ -53,16 +52,16 @@ html, body {
 const clickText = document.getElementById("clickText");
 const gif = document.getElementById("gif");
 
-// Audio setup
+
 const music = new Audio('DSaF Super idol (Music box).mp3');
 music.loop = true;
-music.muted = true; // start muted for autoplay trick
+music.muted = true;
 
-// GIF durations
-const introDuration = 3800;  // intro GIF
-const middleDuration = 700;  // middle GIF
 
-// --------- PRELOAD GIFS ---------
+const introDuration = 3800;
+const middleDuration = 700; 
+
+
 const gifsToPreload = [
   "pixil-gif-drawing (8).gif",
   "pixil-gif-drawing (11).gif",
@@ -75,22 +74,21 @@ gifsToPreload.forEach(src => {
   img.src = src;
   preloadedGifs.push(img);
 });
-// -------------------------------
 
 clickText.addEventListener('click', () => {
-  // Hide the click text
+  
   clickText.style.display = 'none';
 
-  // 2-second delay before GIF fades in
+  
   setTimeout(() => {
     gif.style.display = 'block';
-    // Fade in over 1 second
+ 
     setTimeout(() => { gif.style.opacity = 1; }, 50);
 
-    // Try to play music
+    
     music.play().then(() => { music.muted = false; }).catch(e => console.log("Playback failed:", e));
 
-    // Start GIF sequence
+    
     setTimeout(() => {
       gif.src = "pixil-gif-drawing (11).gif?" + Date.now();
     }, introDuration);
@@ -99,7 +97,7 @@ clickText.addEventListener('click', () => {
       gif.src = "pixil-gif-drawing (10).gif?" + Date.now();
     }, introDuration + middleDuration);
 
-  }, 2000); // 2-second delay
+  }, 2000); 
 });
 </script>
 
