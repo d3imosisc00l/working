@@ -24,30 +24,26 @@ img {
   image-rendering: pixelated;
   display: block;
 }
-
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer; /* indicates user can click anywhere */
-}
 </style>
 </head>
 
 <body>
 
 <img id="gif" src="pixil-gif-drawing (8).gif">
-<div id="overlay"></div>
 
 <script>
 const gif = document.getElementById("gif");
-const overlay = document.getElementById("overlay");
 
-// Audio
+// Audio setup with muted autoplay trick
 const music = new Audio('DSaF Super idol (Music box).mp3');
 music.loop = true;
+music.muted = true; // start muted
+
+music.play().then(() => {
+  music.muted = false; // unmute immediately after playback starts
+}).catch(e => {
+  console.log("Autoplay failed:", e);
+});
 
 // GIF durations
 const introDuration = 3800;
@@ -61,12 +57,6 @@ setTimeout(() => {
 setTimeout(() => {
   gif.src = "pixil-gif-drawing (10).gif?" + Date.now();
 }, introDuration + middleDuration);
-
-// Play music on first click anywhere
-overlay.addEventListener('click', () => {
-  music.play().catch(e => console.log("Music playback failed:", e));
-  overlay.style.display = 'none'; // remove overlay
-}, { once: true });
 </script>
 
 </body>
