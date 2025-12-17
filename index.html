@@ -9,7 +9,7 @@
       padding: 0;
       width: 100%;
       height: 100%;
-      background: dull purple;
+      background: #6a0dad; /* dull purple */
     }
 
     body {
@@ -19,9 +19,10 @@
     }
 
     img {
-      max-width: 900vw;
-      max-height: 900vh;
+      max-width: 90vw;
+      max-height: 90vh;
       object-fit: contain;
+      image-rendering: pixelated;
     }
   </style>
 </head>
@@ -33,16 +34,15 @@
 <script>
   const gif = document.getElementById("gif");
 
-  // ⏱️ CHANGE THESE TIMES TO MATCH YOUR GIFS (milliseconds)
-  const introDuration = 3800;   // pixil-gif-drawing (8).gif
-  const middleDuration = 550;  // pixil-gif-drawing (11).gif
+  const introDuration = 3800;
+  const middleDuration = 700;
 
   setTimeout(() => {
-    gif.src = "pixil-gif-drawing (11).gif";
+    gif.src = "pixil-gif-drawing (11).gif?" + Date.now();
   }, introDuration);
 
   setTimeout(() => {
-    gif.src = "pixil-gif-drawing (10).gif";
+    gif.src = "pixil-gif-drawing (10).gif?" + Date.now();
   }, introDuration + middleDuration);
 </script>
 
