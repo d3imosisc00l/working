@@ -19,10 +19,11 @@
     }
 
     img {
-      max-width: 90vw;
+      width: 85vw;        /* FORCE the GIF to scale up */
+      height: auto;       /* maintain aspect ratio */
       max-height: 90vh;
       object-fit: contain;
-      image-rendering: pixelated;
+      image-rendering: pixelated; /* keep pixel art crisp */
     }
   </style>
 </head>
@@ -34,10 +35,11 @@
 <script>
   const gif = document.getElementById("gif");
 
-  const introDuration = 3800;
-  const middleDuration = 700;
+  const introDuration = 3800;  // intro.gif
+  const middleDuration = 700;  // middle.gif
 
   setTimeout(() => {
+    // Add cache-busting so new GIF is forced to load
     gif.src = "pixil-gif-drawing (11).gif?" + Date.now();
   }, introDuration);
 
